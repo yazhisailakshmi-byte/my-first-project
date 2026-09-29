@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ComicCraft - Home</title>
+<style>
+body { font-family: Arial; background: #f0f0f0; text-align: center; padding: 50px; }
+h1 { color: #ff6600; }
+a { background: #ff6600; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+.story { background: white; padding: 15px; margin: 10px; border-radius: 10px; }
+</style>
+</head>
+<body>
+<h1>?? ComicCraft ??</h1>
+<h2>Welcome to Story World!</h2>
+<a href="/create/">+ Create New Story</a>
+<hr>
+{% for s in stories %}
+<div class="story">
+<h3>{{ s.title }}</h3>
+<p>{{ s.content|truncatewords:20 }}</p>
+<a href="/story/{{ s.id }}/">Read Story</a>
+</div>
+{% empty %}
+<p>No stories yet.</p>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<title>ComicCraft - AI Comic Creator</title>
+<style>
+body { font-family: Arial; background: #FFF8E1; margin: 0; padding: 20px; }
+.box { max-width: 700px; margin: auto; background: white; padding: 25px; border-radius: 15px; border: 3px solid #FF6F00; }
+h1 { text-align: center; color: #FF6F00; }
+label { font-weight: bold; display: block; margin-top: 12px; }
+input, select, textarea { width: 95%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 2px solid #FFCC80; }
+button { width: 100%; padding: 12px; margin-top: 20px; background: #FF6F00; color: white; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; }
+.preview { margin-top: 20px; padding: 15px; background: #FFF3E0; border-radius: 10px; display: none; }
+</style>
+</head>
+<body>
+<div class="box">
+<h1>ComicCraft</h1>
+<p style="text-align:center;">AI Comic Story Creator using Gemini</p>
+
+<label>Story Prompt:</label>
+<textarea id="prompt" rows="3">A Cat superhero saves chennai city</textarea>
+
+<label>Main Character Name:</label>
+<input id="character" type="text" value="la Meow Man">
+
+<label>Setting:</label>
+<input id="setting" type="text" value="Chennai branch">
+
+<label>Tone:</label>
+<select id="tone"><option>Funny</option><option>Adventure</option><option>Emotional</option><option>Superhero</option></select>
+
+<label>Art Style:</label>
+<select id="style"><option>Cartoon</option><option>Anime</option><option>Realistic</option><option>3D Comic</option></select>
+
+<button onclick="generate()">Generate Comic Story</button>
+
+<div id="preview" class="preview">
+<h3>Your Comic Preview:</h3>
+<p id="output"></p>
+<button onclick="downloadPDF()">Download as PDF</button>
+</div>
+</div>
+
+<script>
+function generate() {
+  var c = document.getElementById('character').value;
+  var p = document.getElementById('prompt').value;
+  var s = document.getElementById('setting').value;
+  document.getElementById('preview').style.display='block';
+  document.getElementById('output').innerHTML = "Character: " + c + "<br>Story: " + p + "<br>Setting: " + s + "<br><br>Scene 1: Introduction<br>Scene 2: Problem<br>Scene 3: Fight<br>Scene 4: Victory<br>Scene 5: Happy Ending";
+}
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  var text = document.getElementById('output').innerText;
+  doc.text("ComicCraft - AI Comic Story", 10, 10);
+  doc.text(text, 10, 20);
+  doc.save("ComicCraft_MeowMan.pdf");
+  alert("PDF Download Success Priya!");
+}
+</script>
+</body>
+</html>

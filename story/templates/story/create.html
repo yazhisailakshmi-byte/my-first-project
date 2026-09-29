@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Story - ComicCraft</title>
+<style>
+body { font-family: Arial; background: #f0f0f0; padding: 30px; }
+.form-box { background: white; max-width: 500px; margin: auto; padding: 20px; border-radius: 10px; }
+input, textarea { width: 95%; padding: 10px; margin: 10px 0; }
+button { background: #ff6600; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+a { text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="form-box">
+<h2>Create New Story</h2>
+<a href="/">Back to Home</a><br><br>
+<form method="POST">
+{% csrf_token %}
+<input type="text" name="title" placeholder="Story Title" required><br>
+<textarea name="content" rows="8" placeholder="Write your story here..." required></textarea><br>
+<button type="submit">Save Story</button>
+</form>
+</div>
+</body>
+</html>
